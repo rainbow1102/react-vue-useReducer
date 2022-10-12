@@ -1,17 +1,18 @@
 import React, {Component} from "react"
 
-import IndexPage from "./views/index.js"
+import TodoApp from "./components/index.js"
 // import {Profiler, Provider} from "react"
-import {Provider} from "react-redux"
+// import {Provider} from "react-redux"
 
-import store from "./store"
+// import store from "./store"
 
 function App() {
   return (
     <div className="App">
-      <Provider store={store}>
+      {/*<Provider store={store}>
         <IndexPage/>
-      </Provider>
+      </Provider>*/}
+      <TodoApp/>
     </div>
   )
 }
