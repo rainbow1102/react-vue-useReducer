@@ -8,8 +8,6 @@
 
 import React, {Component} from "react"
 import {connect} from "react-redux"
-import CourseField from "./../components/CourseField"
-import CourseList from "./../components/CourseList"
 import {changeCourseField} from "../store/action/courseTabList"
 
 class IndexPage extends Component {
@@ -17,11 +15,12 @@ class IndexPage extends Component {
     const {curField, changeCourseField} = this.props
     return (
       <div>
-        <CourseField
+        e56345
+        {/*<CourseField
           curField={curField}
           changeCourseField={changeCourseField}
         />
-        <CourseList curField={curField}/>
+        <CourseList curField={curField}/>*/}
       </div>
     )
   }
