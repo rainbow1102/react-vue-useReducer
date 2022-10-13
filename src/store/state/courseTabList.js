@@ -5,6 +5,11 @@
  *  @params
  *  @return
  * */
-export default {
+/*export default {
   curField: "-1"
+}*/
+const initialTodoList = []
+
+export {
+  initialTodoList
 }

@@ -6,42 +6,42 @@
  *  @return
  * */
 
-import {useState, useCallback} from "react"
+import {todoReducer} from "../store/reducer/courseTabList"
+import {initialTodoList} from "../store/state/courseTabList"
+import {useReducer} from "react"
+
 import TodoForm from "./Form.js"
 import TodoList from "./List.js"
+import actionTypes from "../store/actionTypes/courseTabList"
 
 function TodoApp() {
-  const [todoList, setTodoList] = useState([])
+  const [todoList, todoDispatch] = useReducer(todoReducer, initialTodoList)
+  const {ADD_TODO, TOGGLE_TODO, REMOVE_TODO} = actionTypes
 
-  const addTodo = useCallback((todo) => {
-    // setTodoList([...todoList, ...todo])
-    setTodoList(todoList => [...todoList, todo])
-  }, [])
-
-  const toggleTodo = useCallback((id) => {
-    setTodoList(todoList => (
-      todoList.map(v => {
-        /*if (v.id === id) {
-          v.completed = true
-        }*/
-        v.id === id && (v.completed = !v.completed)
-        return v
-      })
-    ))
-  }, [])
-
-  const removeTodo = useCallback((id) => {
-    setTodoList(todoList => todoList.filter(v => v.id !== id))
-  }, [])
   return (
     <div>
       <TodoForm
-        onAddTodo={addTodo}
+        onAddTodo={
+          (todo) => todoDispatch({
+            type: ADD_TODO,
+            payload: todo
+          })
+        }
       />
       <TodoList
         todoList={todoList}
-        onToggleTodo={toggleTodo}
-        onRemoveTodo={removeTodo}
+        onToggleTodo={
+          (id) => todoDispatch({
+            type: TOGGLE_TODO,
+            payload: id
+          })
+        }
+        onRemoveTodo={
+          (id) => todoDispatch({
+            type: REMOVE_TODO,
+            payload: id
+          })
+        }
       />
     </div>
   )
